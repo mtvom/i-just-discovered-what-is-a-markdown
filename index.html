@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Previewer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.5/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      marked.setOptions({ breaks: true, gfm: true });
+
+      const DEFAULT_TEXT = `# Welcome to my Markdown Previewer!
+
+## This is a sub-heading...
+
+Here is a link: [freeCodeCamp](https://www.freecodecamp.org)
+
+Inline code looks like this: \`<div></div>\`
+
+\`\`\`
+// This is a code block
+function add(a, b) {
+  return a + b;
+}
+\`\`\`
+
+- A list item
+- Another list item
+  - A nested one
+
+> Block quotes are great for highlighting a thought.
+
+![A cat](https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg)
+
+**Bold text** makes a point stand out.
+`;
+
+      function App() {
+        const [text, setText] = useState(DEFAULT_TEXT);
+
+        return (
+          <div className="app">
+            <h1 className="title">Markdown Previewer</h1>
+            <div className="panels">
+              <textarea
+                id="editor"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <div
+                id="preview"
+                dangerouslySetInnerHTML={{ __html: marked.parse(text) }}
+              />
+            </div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
