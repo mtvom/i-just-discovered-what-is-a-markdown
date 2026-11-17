@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 24px 16px;
+  font-family: system-ui, sans-serif;
+  background: #3b0764;
+}
+
+.title {
+  text-align: center;
+  color: #f3e8ff;
+}
+
+.panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#editor,
+#preview {
+  flex: 1 1 400px;
+  height: 70vh;
+  box-sizing: border-box;
+  padding: 16px;
+  overflow: auto;
+  border: none;
+  border-radius: 8px;
+  background: #faf5ff;
+  color: #2e1065;
+}
+
+#editor {
+  font-family: monospace;
+  resize: none;
+}
+
+#preview img {
+  max-width: 100%;
+}
+
+#preview blockquote {
+  margin-left: 0;
+  padding-left: 12px;
+  border-left: 4px solid #a855f7;
+}
+
+#preview pre,
+#preview code {
+  background: #ede9fe;
+}
